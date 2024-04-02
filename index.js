@@ -1,17 +1,20 @@
-function loadHomeContent() {
-    const contentWrapper = document.querySelector('.content-wrapper');
-    contentWrapper.innerHTML = "<p>Hello</p>";
-}
-
 document.addEventListener('DOMContentLoaded', function() {
     const skillsButton = document.getElementById('mainNavButtons').querySelector('button:nth-child(2)');
-    const skillsMenu = document.querySelector('.content-menu-backdrop');
+    const skillsMenuButtons = document.querySelectorAll('.attribute-menu-backdrop button');
+
+    let isSkillsMenuOpen = false;
 
     skillsButton.addEventListener('click', function() {
-        if (skillsMenu.style.display === 'none' || skillsMenu.style.display === '') {
-            skillsMenu.style.display = 'block';
+        isSkillsMenuOpen = !isSkillsMenuOpen;
+
+        if (isSkillsMenuOpen) {
+            skillsMenuButtons.forEach(button => {
+                button.style.display = 'block';
+            });
         } else {
-            skillsMenu.style.display = 'none';
+            skillsMenuButtons.forEach(button => {
+                button.style.display = 'none';
+            });
         }
     });
 });
